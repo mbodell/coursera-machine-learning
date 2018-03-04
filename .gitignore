@@ -1,3 +1,5 @@
 # OSX / *nix default autosave extension
 *.m~
 *.m.un~
+*.m.swp
+token.mat
