@@ -62,6 +62,13 @@ end;
 % Scale by 1/m
 J *= 1/m;
 
+% Add regularization cost
+
+rTheta1 = Theta1(:,2:end);
+rTheta2 = Theta2(:,2:end);
+
+J += (lambda/(2*m))*(sum(sumsq(rTheta1,1))+sum(sumsq(rTheta2,1)));
+
 %
 % Part 2: Implement the backpropagation algorithm to compute the gradients
 %         Theta1_grad and Theta2_grad. You should return the partial derivatives of
