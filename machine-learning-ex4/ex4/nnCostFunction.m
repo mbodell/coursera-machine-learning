@@ -70,7 +70,7 @@ end;
 
 % Scale by 1/m
 J *= 1/m;
-% And scale the gradients
+% And scale the gradients for part 2
 Theta1_grad *= 1/m;
 Theta2_grad *= 1/m;
 
@@ -80,6 +80,14 @@ rTheta1 = Theta1(:,2:end);
 rTheta2 = Theta2(:,2:end);
 
 J += (lambda/(2*m))*(sum(sumsq(rTheta1,1))+sum(sumsq(rTheta2,1)));
+
+% create matrix with 0 for the regularization terms for part 3
+tTheta1 = [zeros(size(rTheta1,1),1), rTheta1];
+tTheta2 = [zeros(size(rTheta2,1),1), rTheta2];
+
+% Add in the regularization terms for part 3
+Theta1_grad += (lambda/m) * tTheta1;
+Theta2_grad += (lambda/m) * tTheta2;
 
 %
 % Part 2: Implement the backpropagation algorithm to compute the gradients
