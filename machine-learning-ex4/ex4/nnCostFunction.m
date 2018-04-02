@@ -57,10 +57,22 @@ for i = 1:m,
 	for k = 1:k,
 		J += (-yi(k) * log(a3(k)) - ((1-yi(k))*log(1-a3(k))));
 	end;
+	% From part 2 below, do the backpropogation in this loop (but vector)
+	d3 = a3 - yi;
+	d2 = d3 * Theta2 .* sigmoidGradient([1, z2]);
+	d2 = d2(2:end);
+	% Add in the delta terms
+	Theta1_grad += d2' * a1;
+	Theta2_grad += d3' * a2;
+
+
 end;
 
 % Scale by 1/m
 J *= 1/m;
+% And scale the gradients
+Theta1_grad *= 1/m;
+Theta2_grad *= 1/m;
 
 % Add regularization cost
 
