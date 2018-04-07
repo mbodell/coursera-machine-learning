@@ -98,7 +98,9 @@ while ~isempty(email_contents)
     %
 
     tmp_word_idx = lookup(vocabList, str);
-    if (tmp_word_idx > 0 && strcmp(str, vocabList{tmp_word_idx}) == 1)
+    tmp_word_idx = max([1 tmp_word_idx]);
+    tmp_word_idx = min([length(vocabList) tmp_word_idx]);
+    if (strcmp(str, vocabList{tmp_word_idx}) == 1)
 	    word_indices = [word_indices; tmp_word_idx];
     endif
 
