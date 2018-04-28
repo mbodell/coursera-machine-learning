@@ -50,6 +50,9 @@ Theta_grad = ((X*Theta'-Y).*R)'*X;
 
 J += (lambda/2) * (sum(sumsq(Theta)) + sum(sumsq(X)));
 
+X_grad += lambda * X;
+Theta_grad += lambda * Theta;
+
 
 
 
