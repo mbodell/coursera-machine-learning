@@ -46,7 +46,9 @@ J = (1/2)*sumsq((X*Theta'-Y)(R==1));
 X_grad = ((X*Theta'-Y).*R)*Theta;
 Theta_grad = ((X*Theta'-Y).*R)'*X;
 
+% regularize:
 
+J += (lambda/2) * (sum(sumsq(Theta)) + sum(sumsq(X)));
 
 
 
